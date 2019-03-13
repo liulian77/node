@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拉勾网-列表页</title>
+    <link rel="stylesheet" href="/css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+
+<body>
+    <header></header>
+    <div class="container">
+        <button class="btn btn-primary btn-add-position" data-toggle="modal" data-target="#addModal">添加职位</button>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>职位名称</th>
+                    <th>所属公司</th>
+                    <th>薪资</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="list-container">
+            </tbody>
+        </table>
+        <div id="pagination-container"></div>
+    </div>
+    <div id="login-model-contanier"></div>
+    <div id="register-model-contanier"></div>
+    <div id="position-add-model-container"></div>
+
+    <script src="/js/libs/jquery-1.11.3.min.js"></script>
+    <script src="/js/libs/bootstrap.min.js"></script>
+    <script src="/js/libs/ejs.js"></script>
+
+    <script src="/js/common/login.js"></script>
+    <script src="/js/common/register.js"></script>
+    <script src="/js/common/header.js"></script>
+    <script src="/js/list/listTable.js"></script>
+    <script src="/js/list/listAddModal.js"></script>
+    <script src="/js/list/pagination.js"></script>
+    <script src="/js/list/list.js"></script>
+</body>
+
+</html>

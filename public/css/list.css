@@ -1,0 +1,42 @@
+.btn-add-position {
+    margin: 20px 0;
+}
+
+table {
+    text-align: center;
+    table-layout: fixed;
+}
+
+th {
+    text-align: center;
+}
+
+input {
+    display: none;
+    height: 24px;
+    width: 100px;
+    border: 1px solid #ccc;
+}
+
+.okBtn,
+.cancelBtn {
+    display: none
+}
+
+.edit span {
+    display: none
+}
+
+.edit input {
+    display: inline-block
+}
+
+.edit .editBtn,
+.edit .delBtn {
+    display: none
+}
+
+.edit .okBtn,
+.edit .cancelBtn {
+    display: inline
+}
