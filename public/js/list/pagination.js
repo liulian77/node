@@ -1,14 +1,8 @@
 class Pagination {
-    constructor() {
+    constructor(positionList) {
         this.container = $("#pagination-container");
-        this.createDOM().then($.proxy(this.init, this))
-        this.page = {
-            current: 5
-        };
-        Object.defineProperty(this.page, "count", {
-            value: 5,
-            writable: false
-        })
+        this.createDOM().then($.proxy(this.init, this));
+        this.positionList = positionList;
     };
     createDOM() {
         return new Promise(resolve => {
@@ -16,19 +10,32 @@ class Pagination {
         })
     }
     init(pageTem) {
-        let html = new EJS({ text: pageTem }).render({ current: 5, total: 10 });
+        let { current, total } = this.positionList.page;
+        let html = new EJS({ text: pageTem }).render({ current, total });
         this.container.html(html);
         this.preBtn = $("#prev-page");
         this.nextBtn = $("#next-page");
-        this.pageBtn = this.container.find(".page");
+        this.pageBtn = $(".page");
         this.bindEvents();
     };
     bindEvents() {
-        this.preBtn.on("click", this.preBtnClick.bind(this))
+        this.preBtn.on("click", this.preBtnClick.bind(this));
+        this.nextBtn.on("click", this.nextBtnClick.bind(this))
     }
     preBtnClick() {
-        if (--this.page.current <= 1) {
-            this.preBtn.addClass("disabled");
+        if (--this.positionList.page.current < 1) {
+            this.positionList.page.current = 1;
+            return;
         }
+
+        this.positionList.createDOM().then($.proxy(this.positionList.init, this.positionList));
+    }
+    nextBtnClick() {
+        if (++this.positionList.page.current > this.positionList.page.total) {
+            //prevBtn禁用
+            this.positionList.page.current = this.positionList.page.total;
+            return;
+        }
+        this.positionList.createDOM().then($.proxy(this.positionList.init, this.positionList));
     }
 }

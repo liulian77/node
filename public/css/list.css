@@ -23,6 +23,10 @@ input {
     display: none
 }
 
+td img {
+    width: 50px;
+}
+
 .edit span {
     display: none
 }

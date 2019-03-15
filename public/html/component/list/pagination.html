@@ -1,24 +1,19 @@
-<nav aria-label="...">
+<nav>
     <ul class="pagination">
-        <li id="prev-page"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-        <!-- <li class="active"><a href="javascript:;">1 <span class="sr-only">(current)</span></a></li>
-        <li><a href="javascript:;">2</a></li>
-        <li><a href="javascript:;">3</a></li>
-        <li><a href="javascript:;">4</a></li>
-        <li><a href="javascript:;">5</a></li> -->
-        <% for(var i=current-2;i<=current+2;i++){ %>
-            <%if(i>0 && i<=total){ %>
+        <li id="prev-page" class="<%= current == 1 ? 'disabled' : '' %>"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+        <!-- current total-->
+        <% for(var i = current-2; i <= current-0+2; i++){ %>
+            <% if(i>0 && i <= total){ %>
                 <li class="page <%= i==current? 'active': '' %>">
                     <a href="javascript:;">
                         <%= i %>
                     </a>
                 </li>
                 <% } %>
+
                     <% } %>
-                        <li id="next-page">
-                            <a href="javascript:;" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+
+
+                        <li id="next-page" class="<%= current == total ? 'disabled' : '' %>"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
     </ul>
 </nav>

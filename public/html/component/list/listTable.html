@@ -1,84 +1,33 @@
-<tr>
-    <td>1</td>
-    <td>
-        <span>web前端开发</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>千锋</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>8000</span>
-        <input type="text">
-    </td>
-    <td>
-        <button class="btn btn-info btn-xs editBtn">编辑</button>
-        <button class="btn btn-danger btn-xs delBtn">删除</button>
-        <button class="btn btn-success btn-xs okBtn">确定</button>
-        <button class="btn btn-warning btn-xs cancelBtn">取消</button>
-    </td>
-</tr>
-<tr>
-    <td>2</td>
-    <td>
-        <span>web前端开发</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>千锋</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>8000</span>
-        <input type="text">
-    </td>
-    <td>
-        <button class="btn btn-info btn-xs editBtn">编辑</button>
-        <button class="btn btn-danger btn-xs delBtn">删除</button>
-        <button class="btn btn-success btn-xs okBtn">确定</button>
-        <button class="btn btn-warning btn-xs cancelBtn">取消</button>
-    </td>
-</tr>
-<tr>
-    <td>3</td>
-    <td>
-        <span>web前端开发</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>千锋</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>8000</span>
-        <input type="text">
-    </td>
-    <td>
-        <button class="btn btn-info btn-xs editBtn">编辑</button>
-        <button class="btn btn-danger btn-xs delBtn">删除</button>
-        <button class="btn btn-success btn-xs okBtn">确定</button>
-        <button class="btn btn-warning btn-xs cancelBtn">取消</button>
-    </td>
-</tr>
-<tr>
-    <td>4</td>
-    <td>
-        <span>web前端开发</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>千锋</span>
-        <input type="text">
-    </td>
-    <td>
-        <span>8000</span>
-        <input type="text">
-    </td>
-    <td>
-        <button class="btn btn-info btn-xs editBtn">编辑</button>
-        <button class="btn btn-danger btn-xs delBtn">删除</button>
-        <button class="btn btn-success btn-xs okBtn">确定</button>
-        <button class="btn btn-warning btn-xs cancelBtn">取消</button>
-    </td>
-</tr>
+<% list.forEach(function(position, index){ %>
+
+    <tr>
+        <td>
+            <%= (current-1)*count + index+1 %>
+        </td>
+        <td>
+            <span><%= position.position %></span>
+            <input type="text">
+        </td>
+        <td>
+            <span><%= position.company %></span>
+            <input type="text">
+        </td>
+        <td>
+            <span><%= position.salary %></span>
+            <input type="text">
+        </td>
+        <td>
+            <% if(position.logo){ %>
+                <img src="/uploads/<%= position.logo %>" alt="">
+                <% }else{ %>
+                    <i>暂未上传</i>
+                    <% } %>
+        </td>
+        <td>
+            <button class="btn btn-info btn-xs editBtn">编辑</button>
+            <button class="btn btn-danger btn-xs delBtn">删除</button>
+            <button class="btn btn-success btn-xs okBtn">确定</button>
+            <button class="btn btn-warning btn-xs cancelBtn">取消</button>
+        </td>
+    </tr>
+    <% }) %>

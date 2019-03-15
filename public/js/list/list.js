@@ -14,7 +14,7 @@ class List {
     createList() {
         new PositionList($("#list-container"));
         new PositionAdd();
-        new Pagination();
+
     }
 
 }

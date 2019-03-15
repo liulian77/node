@@ -1,15 +1,42 @@
 class PositionList {
     constructor(container) {
         this.container = container;
-        this.createDOM().then($.proxy(this.addEvents, this));
+        //确定当前页码，以及每一页多少条数据
+        this.page = {
+            current: 1
+        };
+        //给this.page定义一个count属性，值为5，不能被修改(ES5)
+        Object.defineProperty(this.page, "count", {
+            value: 5,
+            writable: false
+        });
+        this.createDOM().then($.proxy(this.init, this));
     }
 
     createDOM() {
         return new Promise(resolve => {
-            this.container.load("/html/component/list/listTable.html", resolve);
+            $.get("/html/component/list/listTable.html", resolve);
         })
     }
+    init(listTemplate) {
+        let { current, count } = this.page;
+        // console.log(current, count)
+        $.get(baseUrl + "/position/get", { current, count }, $.proxy(this.getPositionSucc, this, listTemplate));
 
+    }
+    getPositionSucc(listTemplate, res) {
+        this.page.current = res.res_body.current;
+        this.page.total = res.res_body.total;
+        let html = new EJS({ text: listTemplate }).render({
+            list: res.res_body.list,
+            current: this.page.current,
+            count: this.page.count
+        });
+        this.container.html(html);
+        this.addEvents();
+        //渲染分页
+        new Pagination(this);
+    }
     addEvents() {
         this.container.on("click", "button", this.editBtnClick)
     }

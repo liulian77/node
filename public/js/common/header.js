@@ -26,7 +26,7 @@ class Header {
             case "/":
                 aLi.eq(0).addClass("active");
                 break;
-            case "/list":
+            case "list":
                 aLi.eq(1).addClass("active");
                 break;
         }
